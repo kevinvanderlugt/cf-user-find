@@ -4,6 +4,15 @@
     <li>
       <%= user.name %><br>
       <%= user.email %>
+      <div class="licenses">
+        <% unless user.licenses.nil? %>
+          <ul>
+            <% user.licenses.each do |license| %>
+              <li><%= license %></li>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
     </li>
   <% end %>
 </ul>
