@@ -1,0 +1,23 @@
+<h1>All Washington Users:</h1>
+<table class="people">
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Licenses</th>
+  </tr>
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= user.name %></td>
+      <td><%= user.email %><td>
+      <td class="licenses">
+        <% unless user.licenses.nil? %>
+          <ul>
+            <% user.licenses.each do |license| %>
+              <li><%= license %></li>
+            <% end %>
+          </ul>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+</table>
