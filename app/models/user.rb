@@ -10,6 +10,6 @@ class User < ActiveRecord::Base
   private
     def normalize_email
       # There is probably more to normalizing an email but I am not entirely sure what it should be
-      state.downcase!
+      email.downcase!
     end
 end
