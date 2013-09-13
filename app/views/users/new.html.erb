@@ -13,5 +13,12 @@
   <%= f.text_field :name %><br>
   <%= f.label :email %>
   <%= f.text_field :email %><br>
+  License:<br>
+  <%= f.fields_for :licenses do |license_form| %>
+    <%= license_form.label :number %>
+    <%= license_form.text_field :number %><br>
+    <%= license_form.label :state %>
+    <%= license_form.text_field :state %><br>
+  <% end %>
   <%= f.submit %>
 <% end %>
