@@ -1,20 +1,3 @@
 <h1>All Users:</h1>
-<ul class="people">
-  <% @users.each do |user| %>
-    <li>
-      <%= user.name %><br>
-      <%= user.email %>
-      <div class="licenses">
-        <% unless user.licenses.nil? %>
-          <ul>
-            <% user.licenses.each do |license| %>
-              <li><%= license %></li>
-            <% end %>
-          </ul>
-        <% end %>
-      </div>
-    </li>
-  <% end %>
-</ul>
-
+<%= render 'users' %>
 <%= link_to "Add User", new_user_path %>

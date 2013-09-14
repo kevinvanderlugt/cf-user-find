@@ -24,9 +24,7 @@ class UsersController < ApplicationController
   end
 
   def search
-    email = params[:email]
-    @users = User.where('email like ?', '%' + params[:email] + '%')
-    puts @users
+    @users = User.where('email like ?', '%' + params[:email] + '%') if params[:email]
   end
 
   private
