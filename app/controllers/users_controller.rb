@@ -1,7 +1,4 @@
 class UsersController < ApplicationController
-  def home
-    @users = User.joins(:licenses).where(licenses: {state: "WA"})
-  end
 
   def index
     @users = User.all
@@ -20,6 +17,16 @@ class UsersController < ApplicationController
     else
       render 'new'
     end
+  end
+
+  def home
+    @users = User.joins(:licenses).where(licenses: {state: "WA"})
+  end
+
+  def search
+    email = params[:email]
+    @users = User.where('email like ?', '%' + params[:email] + '%')
+    puts @users
   end
 
   private
