@@ -38,7 +38,6 @@ class UsersController < ApplicationController
     end
 
     def update_search_stats
-      @users.update_all last_searched_for_at: Time.now
-      @users.update_all "search_count = search_count+1"
+      @users.update_all(["search_count = search_count+1, last_searched_for_at = ?", Time.now])
     end
 end
