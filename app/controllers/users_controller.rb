@@ -25,7 +25,7 @@ class UsersController < ApplicationController
 
   def search
     if params[:email] && params[:email] != ""
-      @users = User.where('email like ?', '%' + params[:email] + '%')
+      @users = User.where('email like ?', '%' + params[:email] + '%').order("search_count desc")
       update_search_stats
     else
       @users = User.all
@@ -39,5 +39,6 @@ class UsersController < ApplicationController
 
     def update_search_stats
       @users.update_all last_searched_for_at: Time.now
+      @users.update_all "search_count = search_count+1"
     end
 end

@@ -5,6 +5,7 @@
     <th>Email</th>
     <th>Licenses</th>
     <th>Searched Date</th>
+    <th>Search Count</th>
   </tr>
   <% @users.each do |user| %>
     <tr>
@@ -20,6 +21,7 @@
         <% end %>
       </td>
       <td><%= user.last_searched_for_at %></td>
+      <td><%= user.search_count %></td>
     </tr>
   <% end %>
 </table>
