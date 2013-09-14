@@ -24,8 +24,12 @@ class UsersController < ApplicationController
   end
 
   def search
-    @users = User.where('email like ?', '%' + params[:email] + '%') if params[:email]
-    update_search_stats
+    if params[:email] && params[:email] != ""
+      @users = User.where('email like ?', '%' + params[:email] + '%')
+      update_search_stats
+    else
+      @users = User.all
+    end
   end
 
   private
