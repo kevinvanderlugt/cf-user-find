@@ -25,10 +25,15 @@ class UsersController < ApplicationController
 
   def search
     @users = User.where('email like ?', '%' + params[:email] + '%') if params[:email]
+    update_search_stats
   end
 
   private
     def user_params
       params.require(:user).permit(:email, :name, licenses_attributes: [:number, :state, :id])
+    end
+
+    def update_search_stats
+      @users.update_all last_searched_for_at: Time.now
     end
 end
